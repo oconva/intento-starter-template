@@ -1,6 +1,6 @@
-# Intento Starter Template
+## Intento Starter Template
 
-This is a starter template for [Intento](https://intento.pkural.ca). It comes pre-configured with the following features:
+To get up and running quickly with the [Intento](https://intento.pkural.ca) framework, you can use the Intento starter template. The starter template is a pre-configured project with all the necessary configurations and setup to get you started with Intento write quality and reliable code. It comes pre-configured with the following features:
 
 - **Intento**: Intento installed and configured to start serving intent recognition service endpoints.
 - **TypeScript**: TypeScript to allow you to write type-safe code efficiently.
@@ -11,9 +11,13 @@ This is a starter template for [Intento](https://intento.pkural.ca). It comes pr
 - **SWC**: For faster and more efficient TypeScript compilation.
 - **PNPM**: PNPM to manage your dependencies efficiently.
 
-## Getting Started
+To get started, follow the instructions below.
 
-Simply, clone the [intento starter template](https://github.com/oconva/intento-starter-template) to get started.
+To learn more about Intento, check the [Intento](https://intento.pkural.ca) documentation.
+
+### Setup
+
+Simply, clone the [Intento starter template](https://github.com/oconva/intento-starter-template) to get started.
 
 ```bash copy
 git clone https://github.com/oconva/intento-starter-template.git
@@ -21,69 +25,55 @@ git clone https://github.com/oconva/intento-starter-template.git
 
 ### Setup Environment Variables
 
-Create a `.env` file in the root of the project and add the following environment variables:
+By default, Intento uses Google's Gemini API for text generation and embedding models. If you don't yet have a Google Gen AI API key, you can get one from [Gemini API - Get an API Key](https://ai.google.dev/gemini-api/docs/api-key).
 
-```env copy
+You can also use OpenAI API instead of Gemini API. You'll have to provide your OpenAI API key as the `OPENAI_API_KEY` environment variable and configure your IRS endpoints to use the LLM model you want it to use.
+
+Intento was developed using QvikChat which is built on top of Firebase Genkit, which allows you to easily add any Genkit plugins to your Intento project. You can easily use any LLM model available through any Genkit plugin by simply configuring that plugin when setting up Genkit.
+
+To learn more about configuring IRS endpoints to use a specific LLM model, check [here](https://intento.pkural.ca/irs-endpoints).
+
+If using the default Gemini API models or OpenAI models, there should be a `.env` file at the root level of your project directory, and it should have a value for at least one of the following, depending on which API you want to use:
+
+```bash
 GOOGLE_GENAI_API_KEY=
 OPENAI_API_KEY=
-GOOGLE_APPLICATION_CREDENTIALS=
 ```
 
 Alternatively, you can copy the `.env.tmp` file or rename it to `.env` and fill in the values.
 
-By default intento uses the Google GenAI, so to use intento with default settings, you need to provide the `GOOGLE_GENAI_API_KEY`. You don't have to set values for other environment variables if you are using the default settings.
+### Install Dependencies
 
-Add value to the `OPENAI_API_KEY` variable if you're going to use OpenAI models and to the `GOOGLE_APPLICATION_CREDENTIALS` variable if you're going to use Firebase Firestore.
+You can run the following commands to install the dependencies:
 
-### Running the Project
-
-You can run the following commands to get started:
-
-```bash copy
+```bash
 npm install # or pnpm install
-npm run dev # or pnpm dev
 ```
 
-The starter template predefines some IRS endpoints based on test data. Once, you run the project, you can test the endpoints from terminal using command below:
+### Testing Predefined Endpoint
 
-```bash copy
-curl -X POST "http://127.0.0.1:3400/irs" -H "Content-Type: application/json" -H "Authorization: a5zwhp0YlcRVkpnOXchIkL1lrmf0MPg24POM0kO6HcM=" -d '{"data": { "query": "add 4 litres milk?", "uid": "DI2UZuaTWjQPzVCRjzPW" } }'
-```
+Intento starter template comes pre-defined with an IRS endpoint based on test data related to an inventory management app. This endpoint is defined in the `src/index.ts` file.
 
-Above example points to `http://127.0.0.1:3400`. You can change this port and host depending on where you are running the server and on which port.
+You can test the pre-defined endpoint to see how the IRS endpoints work and to confirm Intento setup. You can do this either using a graphical interface or by running the server locally and testing the endpoints using the terminal.
 
-You could also use the [Genkit Developer UI](#genkit-developer-ui) to test the endpoints.
+Check the [testing endpoints](https://intento.pkural.ca/testing-endpoints) section to learn more about how you can test your IRS endpoints.
 
-### Testing
+To learn more about the Intento starter template, check the [Intento Starter Template](https://github.com/oconva/intento-starter-template) repo.
 
-The starter template comes with Jest pre-configured to run your tests, and some tests predefined in the `src/tests` directory. You can run the tests using the following command:
+## Contributions
 
-```bash copy
-npm run test # or pnpm test
-```
+Contributions are welcome! Please refer to the [contribution guidelines](CONTRIBUTING.md) for more information.
 
-Please ensure you have the environment variables set up before running the tests.
+## License
 
-By default, Jest is configured to test the source code in the `src` directory. You can change the configuration in the `jest.config.js` file, along with any other Jest configurations you may want to change.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-### Genkit Developer UI
+## Issues
 
-You can run the Genkit developer UI to test the endpoints. Testing the endpoints using a graphical interface is probably the easiest way to get started. You can know more about the Genkit Developer UI [here](https://firebase.google.com/docs/genkit/devtools#genkit_developer_ui).
+If you encounter any issues or bugs while using the Intento Starter Template, please report them by following these steps:
 
-Start the Genkit developer UI:
+1. Check if the issue has already been reported by searching our issue tracker.
+2. If the issue hasn't been reported, create a new issue and provide a detailed description of the problem.
+3. Include steps to reproduce the issue and any relevant error messages or screenshots.
 
-```bash copy
-npx genkit start
-```
-
-OR, you can install the Genkit CLI globally:
-
-```bash copy
-npm i -g genkit
-```
-
-Then start the Genkit developer UI:
-
-```bash copy
-genkit start
-```
+[Open Issue](https://github.com/oconva/intento-starter-template/issues)

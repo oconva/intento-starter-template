@@ -4,6 +4,7 @@ import {
   type IRSData,
   type IntentData,
   type APIKeyRecord,
+  type IRSEndpointConfig,
 } from '@oconva/intento';
 
 // import data
@@ -23,7 +24,7 @@ const irsDataSource = new InMemoryDataSource({
 });
 
 // Configure the IRS endpoint with endpoint name and data source.
-const irsEndpointConfig = {
+const irsEndpointConfig: IRSEndpointConfig = {
   endpoint: 'irs',
   dataSource: irsDataSource,
 };
