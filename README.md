@@ -11,15 +11,15 @@ To get up and running quickly with the [Intento](https://intento.pkural.ca) fram
 - **SWC**: For faster and more efficient TypeScript compilation.
 - **PNPM**: PNPM to manage your dependencies efficiently.
 
-To get started, follow the instructions below.
-
 To learn more about Intento, check the [Intento](https://intento.pkural.ca) documentation.
+
+To get started, follow the instructions below.
 
 ### Setup
 
 Simply, clone the [Intento starter template](https://github.com/oconva/intento-starter-template) to get started.
 
-```bash copy
+```bash
 git clone https://github.com/oconva/intento-starter-template.git
 ```
 
@@ -55,6 +55,66 @@ npm install # or pnpm install
 Intento starter template comes pre-defined with an IRS endpoint based on test data related to an inventory management app. This endpoint is defined in the `src/index.ts` file.
 
 You can test the pre-defined endpoint to see how the IRS endpoints work and to confirm Intento setup. You can do this either using a graphical interface or by running the server locally and testing the endpoints using the terminal.
+
+#### Test from Terminal
+
+You can run the server locally to test the endpoints from their REST endpoints.
+
+Before you can do this, you will need to first compile the TypeScript code.
+
+Compile the TypeScript code. You can modify `.swcrc` to change the SWC configurations and `package.json` to adjust the build command.
+
+```bash copy
+npm run build
+```
+
+Or
+
+```bash copy
+pnpm build
+```
+
+Then, start the server:
+
+```bash copy
+npm run start
+```
+
+Or
+
+```bash copy
+pnpm start
+```
+
+Depending on which endpoint you wish to test, and where and on which port your server starts, you should be able to access the IRS endpoints through the terminal using the `curl` command. The below given example sends the query to the `irs` endpoint:
+
+```bash copy
+curl -X POST "http://127.0.0.1:3400/irs" -H "Content-Type: application/json" -H "Authorization: a5zwhp0YlcRVkpnOXchIkL1lrmf0MPg24POM0kO6HcM=" -d '{"data": { "query": "add 4 litres milk?", "uid": "DI2UZuaTWjQPzVCRjzPW" } }'
+```
+
+#### Test Using Genkit Developer UI
+
+You can run the Genkit developer UI to test the endpoints. Testing the endpoints using a graphical interface is probably the easiest way to get started. You can know more about the Genkit Developer UI [here](https://firebase.google.com/docs/genkit/devtools#genkit_developer_ui).
+
+Start the Genkit developer UI:
+
+```bash copy
+npx genkit start
+```
+
+OR, you can install the Genkit CLI globally:
+
+```bash copy
+npm i -g genkit
+```
+
+Then start the Genkit developer UI:
+
+```bash copy
+genkit start
+```
+
+You should be able to see your defined IRS endpoints under the **Flows** section in the left sidebar. Simply click on the endpoint you want to test and enter the query you want to test with. Clicking the **Run** button will send the query to the endpoint and the response generation process will start.
 
 Check the [testing endpoints](https://intento.pkural.ca/testing-endpoints) section to learn more about how you can test your IRS endpoints.
 
