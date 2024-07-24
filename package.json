@@ -10,7 +10,7 @@
     "buildandtest": "npm run build && npm run test",
     "lint": "pnpm eslint .",
     "format": "pnpm prettier . --write",
-    "test": "NODE_OPTIONS=\"$NODE_OPTIONS --experimental-vm-modules\" jest --no-watchman --detectOpenHandles",
+    "test": "NODE_OPTIONS=\"$NODE_OPTIONS --experimental-vm-modules\" jest --verbose --no-watchman --forceExit",
     "predeploy": "pnpm lint && pnpm format && pnpm build && pnpm test"
   },
   "keywords": [
