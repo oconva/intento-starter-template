@@ -46,11 +46,11 @@ updates:
       intento:
         applies-to: version-updates
         patterns:
-          - '@oconva/intento'
+          - 'intento'
       intento-security-updates:
         applies-to: security-updates
         patterns:
-          - '@oconva/intento'
+          - 'intento'
 
   - package-ecosystem: 'github-actions'
     directory: '/'

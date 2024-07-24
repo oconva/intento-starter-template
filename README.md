@@ -44,7 +44,7 @@ npm install # or pnpm install
 npm run dev # or pnpm dev
 ```
 
-The starter template predefines some chat endpoints. Once, you run the project, you can test the endpoints from terminal using command below:
+The starter template predefines some IRS endpoints based on test data. Once, you run the project, you can test the endpoints from terminal using command below:
 
 ```bash copy
 curl -X POST "http://127.0.0.1:3400/irs" -H "Content-Type: application/json" -H "Authorization: a5zwhp0YlcRVkpnOXchIkL1lrmf0MPg24POM0kO6HcM=" -d '{"data": { "query": "add 4 litres milk?", "uid": "DI2UZuaTWjQPzVCRjzPW" } }'
