@@ -1,0 +1,47 @@
+{
+  "name": "intento-starter-template",
+  "version": "1.0.0",
+  "description": "Pre-configured project to help you get started with Intento quickly.",
+  "main": "lib/index.js",
+  "scripts": {
+    "start": "nodemon -x tsx lib/index.js",
+    "dev": "npm run build && npm run start",
+    "build": "swc --strip-leading-paths --delete-dir-on-start -d lib src",
+    "buildandtest": "npm run build && npm run test",
+    "lint": "pnpm eslint .",
+    "format": "pnpm prettier . --write",
+    "test": "NODE_OPTIONS=\"$NODE_OPTIONS --experimental-vm-modules\" jest --no-watchman --detectOpenHandles",
+    "predeploy": "pnpm lint && pnpm format && pnpm build && pnpm test"
+  },
+  "keywords": [
+    "intento",
+    "conversational ai",
+    "chat",
+    "chatbot",
+    "chat agent",
+    "langchain",
+    "genkit"
+  ],
+  "author": "Oconva <oconva.org@gmail.com> (https://github.com/oconva)",
+  "license": "MIT",
+  "devDependencies": {
+    "@eslint/js": "^9.7.0",
+    "@swc/cli": "^0.4.0",
+    "@types/cors": "^2.8.17",
+    "@types/eslint__js": "^8.42.3",
+    "@types/jest": "^29.5.12",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "jest": "^29.7.0",
+    "nodemon": "^3.1.4",
+    "prettier": "^3.3.3",
+    "ts-jest": "^29.2.3",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.16.2",
+    "typescript": "^5.5.4",
+    "typescript-eslint": "^7.17.0"
+  },
+  "dependencies": {
+    "intento": "1.0.0-alpha.1"
+  }
+}

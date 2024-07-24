@@ -1,0 +1,33 @@
+{
+  "include": ["src/**/*"],
+  "compileOnSave": true,
+  "compilerOptions": {
+    // Basic Options
+    "target": "ES2017",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "lib": ["es2017"],
+    "outDir": "lib",
+    "sourceMap": true,
+    "noEmit": false,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "allowSyntheticDefaultImports": true,
+
+    // Strictness Checks
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "strictPropertyInitialization": true,
+    "noImplicitThis": true,
+    "noImplicitReturns": true,
+    "alwaysStrict": true,
+
+    // Additional Checks and Features
+    "skipLibCheck": true
+  }
+}
