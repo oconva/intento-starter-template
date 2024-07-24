@@ -1,43 +1,16 @@
 import {
-  type APIKeyRecord,
-  getServerEndpointConfig,
   InMemoryDataSource,
-  type IntentData,
-  type IRSData,
   runIRSServer,
-} from 'intento';
+  type IRSData,
+  type IntentData,
+  type APIKeyRecord,
+  type IRSEndpointResponse,
+} from '@oconva/intento';
 
 // import data
 import * as IRS_DATA from '../../data/irs-data.json';
 import * as INTENTS_DATA from '../../data/intents-data.json';
 import * as API_KEYS_DATA from '../../data/api-keys-data.json';
-
-type IRSOutput =
-  | {
-      code: 'intent-recognized';
-      output: {
-        intent_code: string;
-        data?: unknown;
-      };
-    }
-  | {
-      code: 'need-more-info';
-      output: {
-        data: {
-          missing_data: string[];
-        };
-      };
-    }
-  | {
-      code: 'intent-not-recognized';
-      output: {
-        message: string;
-      };
-    };
-
-type EndpointResponse = {
-  result: {response: IRSOutput};
-};
 
 /**
  * Integration tests for IRS (Intent Recognition Service).
@@ -67,15 +40,15 @@ describe('IRS Test', () => {
       },
     });
 
-    // Get the complete configurations required to setup the IRS endpoint.
-    // This will involve fetching the IRS data from data source, setting up the require prompts with IRS data and API key store setup.
-    const irsEndpointConfig = await getServerEndpointConfig({
+    // Configure the IRS endpoint with endpoint name and data source.
+    const irsEndpointConfig = {
       endpoint: 'irs',
       dataSource: irsDataSource,
-    });
+    };
 
     // Run server with the IRS endpoint configurations.
     // You can provide multiple endpoint configurations if you want to enable multiple IRS endpoints.
+    // This will involve fetching the IRS data from data source, setting up the required prompts with IRS data, and API key store setup.
     runIRSServer({
       endpointConfigs: [irsEndpointConfig],
     });
@@ -99,7 +72,8 @@ describe('IRS Test', () => {
         }),
       });
       // retrieve response JSON data
-      const endpointResponse = (await fetchResponse.json()) as EndpointResponse;
+      const endpointResponse =
+        (await fetchResponse.json()) as IRSEndpointResponse;
       // parse IRS response
       const parsedData = endpointResponse.result.response;
 
@@ -119,7 +93,6 @@ describe('IRS Test', () => {
       expect(parsedData.code).toBeDefined();
       // code should "intent-recognized"
       expect(parsedData.code).toBe('intent-recognized');
-      console.error('HEREEEEE\n\n');
       // output should be defined
       expect(parsedData.output).toBeDefined();
       // output should have intent_code

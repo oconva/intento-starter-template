@@ -42,6 +42,6 @@
     "typescript-eslint": "^7.17.0"
   },
   "dependencies": {
-    "intento": "1.0.0-alpha.1"
+    "@oconva/intento": "1.0.1"
   }
 }
